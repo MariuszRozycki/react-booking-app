@@ -1,8 +1,13 @@
 import './App.css';
 
+const listBackground = {
+  backgroundColor: "white",
+  padding: 10
+}
+
 function Offer({ name, description, country, cover }) {
   return (
-    <div className='offer'>
+    <div className='offer' style={listBackground}>
       <div className='offer__column--w150'>
         <img src={cover} alt="houses" />
       </div>
@@ -20,7 +25,7 @@ Offer.defaultProps = {
   description: "Brakuje opisu"
 }
 
-function App() {
+function Home() {
   return (
     <div className="App">
       <Offer
@@ -44,4 +49,4 @@ function App() {
   );
 }
 
-export default App;
+export default Home;
