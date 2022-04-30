@@ -1,23 +1,45 @@
-import logo from './logo.svg';
 import './App.css';
+
+function Offer({ name, description, country, cover }) {
+  return (
+    <div className='offer'>
+      <div className='offer__column--w150'>
+        <img src={cover} alt="houses" />
+      </div>
+      <div>
+        <h2>{name}</h2>
+        <p>{description}</p>
+        <p>{country}</p>
+      </div>
+      <div className='offer__column'></div>
+    </div>
+  )
+}
+
+Offer.defaultProps = {
+  description: "Brakuje opisu"
+}
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Offer
+        name={"Hotel Goralski"}
+        description={"Spokojne miejsce w gorach"}
+        country={"Polska"}
+        cover="https://picsum.photos/150/150" />
+      <Offer
+        name={"Hotel pod Jaworem"}
+        country={"Polska"}
+        cover="https://picsum.photos/150/150" />
+      <Offer
+        name={"Hotel na Skarpie"}
+        country={"Polska"}
+        cover="https://picsum.photos/150/150" />
+      <Offer
+        name={"Hotel Gdynski"}
+        country={"Polska"}
+        cover="https://picsum.photos/150/150" />
     </div>
   );
 }
