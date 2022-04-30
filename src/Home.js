@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import './App.css';
 
@@ -8,7 +8,14 @@ const listBackground = {
   padding: 10
 }
 
-function Offer({ name, description, country, cover }) {
+function Offer({
+  name,
+  description,
+  country,
+  cover,
+  handleClick
+}) {
+
   return (
     <div className='offer' style={listBackground}>
       <div className='offer__column--w150'>
@@ -16,7 +23,7 @@ function Offer({ name, description, country, cover }) {
       </div>
       <div>
         <h2
-          onClick={() => console.log(name)}
+          onClick={() => handleClick(name)}
           style={{ cursor: "pointer" }}
         >
           {name}
@@ -37,11 +44,21 @@ Offer.defaultProps = {
   description: "Brakuje opisu"
 }
 
-// const selectedOffer = "Cozy flat";
 
 function Home() {
 
   const [selectedOffer, setSelectedOffer] = useState("Cozy flat");
+  // const [data, setData] = useState([]);
+
+  useEffect(() => {
+    setSelectedOffer("!!!");
+  }, []);
+
+  // useEffect(() => {
+  //   fetch("https://jsonplaceholder.typicode.com/posts")
+  //     .then(response => response.json())
+  //     .then(data => setData(data))
+  // }, []);
 
   return (
     <div className="App">
@@ -52,19 +69,27 @@ function Home() {
         name={"Hotel Goralski"}
         description={"Spokojne miejsce w gorach"}
         country={"Polska"}
-        cover="https://picsum.photos/150/150" />
+        cover="https://picsum.photos/150/150"
+        handleClick={setSelectedOffer}
+      />
       <Offer
         name={"Hotel pod Jaworem"}
         country={"Polska"}
-        cover="https://picsum.photos/150/150" />
+        cover="https://picsum.photos/150/150"
+        handleClick={setSelectedOffer}
+      />
       <Offer
         name={"Hotel na Skarpie"}
         country={"Polska"}
-        cover="https://picsum.photos/150/150" />
+        cover="https://picsum.photos/150/150"
+        handleClick={setSelectedOffer}
+      />
       <Offer
         name={"Hotel Gdynski"}
         country={"Polska"}
-        cover="https://picsum.photos/150/150" />
+        cover="https://picsum.photos/150/150"
+        handleClick={setSelectedOffer}
+      />
     </div>
   );
 }
