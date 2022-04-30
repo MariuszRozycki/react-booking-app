@@ -1,4 +1,7 @@
+import { useState } from 'react';
+import PropTypes from 'prop-types';
 import './App.css';
+
 
 const listBackground = {
   backgroundColor: "white",
@@ -12,7 +15,12 @@ function Offer({ name, description, country, cover }) {
         <img src={cover} alt="houses" />
       </div>
       <div>
-        <h2>{name}</h2>
+        <h2
+          onClick={() => console.log(name)}
+          style={{ cursor: "pointer" }}
+        >
+          {name}
+        </h2>
         <p>{description}</p>
         <p>{country}</p>
       </div>
@@ -21,13 +29,25 @@ function Offer({ name, description, country, cover }) {
   )
 }
 
+Offer.propTypes = {
+  name: PropTypes.string.isRequired
+}
+
 Offer.defaultProps = {
   description: "Brakuje opisu"
 }
 
+// const selectedOffer = "Cozy flat";
+
 function Home() {
+
+  const [selectedOffer, setSelectedOffer] = useState("Cozy flat");
+
   return (
     <div className="App">
+      <div>
+        <h1>Wybrano: {selectedOffer}</h1>
+      </div>
       <Offer
         name={"Hotel Goralski"}
         description={"Spokojne miejsce w gorach"}
